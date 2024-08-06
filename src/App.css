@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  width: 500px;
+  margin: auto;
+}
+
+.App > * {
+  margin-bottom: 20px;
 }
 
 .App-logo {
@@ -35,4 +41,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.playlist {
+  width: 100%;
+}
+
+.playlist-control {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playlist-prev-next {
+  flex: 1;
+}
+
+.player > video {
+  width: 100%;
+  margin-bottom: 10px;
 }
