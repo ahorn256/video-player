@@ -6,16 +6,16 @@ function AddUrl() {
   const [ counter, setCounter ] = useState(1);
   const [ title, setTitle ] = useState('');
   const [ url, setUrl ] = useState('');
-  const [ , addToPlaylist ] = useContext(PlaylistContext);
+  const [ , , addToPlaylist ] = useContext(PlaylistContext);
   const [ , setSelectedMedia ] = useContext(SelectedMediaContext);
 
   function addMedia() {
-    const newCounter = counter + 1;
+    const newId = `id-${counter}`;
 
-    addToPlaylist(title, url, newCounter);
+    addToPlaylist(title, url, newId);
 
-    setCounter(newCounter);
-    setSelectedMedia(newCounter);
+    setSelectedMedia(newId);
+    setCounter(counter + 1);
   }
 
   return (

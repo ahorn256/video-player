@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const PlaylistContext = createContext([[], () => {}, () => {}]);
+const PlaylistContext = createContext([[], () => {}, () => {}, () => {}]);
 
 export default PlaylistContext;
