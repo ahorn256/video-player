@@ -6,17 +6,17 @@ const defaultPlaylist = [
   {
     id: "1",
     title: "ElephantsDream",
-    src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+    url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
   },
   {
     id: "2",
     title: "BigBuckBunny",
-    src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
   },
   {
     id: "3",
     title: "Sintel",
-    src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+    url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
   }
 ];
 
