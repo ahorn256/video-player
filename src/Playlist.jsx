@@ -7,13 +7,13 @@ function Playlist() {
   const [ selectedMedia, setSelectedMedia ] = useContext(SelectedMediaContext);
 
   function deleteMedia() {
-    const item = playlist.find(item => item.id === selectedMedia);
-    const i = item ? playlist.indexOf(item) : -1;
+    const deletedMedia = playlist.find(item => item.id === selectedMedia);
+    const deletedMediaPos = deletedMedia ? playlist.indexOf(deletedMedia) : -1;
 
-    if(i > -1 && i + 1 < playlist.length) {
-      setSelectedMedia(playlist[i + 1].id);
-    } else if(i > -1 && i - 1 > -1) {
-      setSelectedMedia(playlist[i - 1].id);
+    if(deletedMediaPos > -1 && deletedMediaPos + 1 < playlist.length) {
+      setSelectedMedia(playlist[deletedMediaPos + 1].id);
+    } else if(deletedMediaPos > -1 && deletedMediaPos - 1 > -1) {
+      setSelectedMedia(playlist[deletedMediaPos - 1].id);
     } else {
       setSelectedMedia(0);
     }
