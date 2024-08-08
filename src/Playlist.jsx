@@ -7,18 +7,31 @@ function Playlist() {
   const [ selectedMedia, setSelectedMedia ] = useContext(SelectedMediaContext);
 
   function deleteMedia() {
-    const deletedMedia = playlist.find(item => item.id === selectedMedia);
-    const deletedMediaPos = deletedMedia ? playlist.indexOf(deletedMedia) : -1;
+    const currentMedia = playlist.find(item => item.id === selectedMedia);
+    const currentMediaPos = currentMedia ? playlist.indexOf(currentMedia) : -1;
 
-    if(deletedMediaPos > -1 && deletedMediaPos + 1 < playlist.length) {
-      setSelectedMedia(playlist[deletedMediaPos + 1].id);
-    } else if(deletedMediaPos > -1 && deletedMediaPos - 1 > -1) {
-      setSelectedMedia(playlist[deletedMediaPos - 1].id);
+    if(currentMediaPos > -1 && currentMediaPos + 1 < playlist.length) {
+      setSelectedMedia(playlist[currentMediaPos + 1].id);
+    } else if(currentMediaPos > -1 && currentMediaPos - 1 > -1) {
+      setSelectedMedia(playlist[currentMediaPos - 1].id);
     } else {
       setSelectedMedia(0);
     }
 
     deleteFromPlaylist(selectedMedia);
+  }
+
+  function selectMedia(direction) {
+    const currentMedia = playlist.find(item => item.id === selectedMedia);
+    const currentMediaPos = currentMedia ? playlist.indexOf(currentMedia) : -1;
+
+    if(currentMediaPos < 0) return;
+
+    if(direction > 0 && currentMediaPos + 1 < playlist.length) {
+      setSelectedMedia(playlist[currentMediaPos + 1].id);
+    } else if(direction < 0 && currentMediaPos - 1 > -1) {
+      setSelectedMedia(playlist[currentMediaPos - 1].id);
+    }
   }
 
   return (
@@ -32,8 +45,8 @@ function Playlist() {
       </div>
       <div className='playlist-control'>
         <div className='playlist-prev-next'>
-          <button>⇤</button>
-          <button>⇥</button>
+          <button onClick={() => selectMedia(-1)}>⇤</button>
+          <button onClick={() => selectMedia(1)}>⇥</button>
         </div>
         <button onClick={deleteMedia}>Delete</button>
       </div>
