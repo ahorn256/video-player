@@ -21,7 +21,7 @@ const defaultPlaylist = [
 ];
 
 function Playlist() {
-  const [ playlist, setPlaylist, , deleteFromPlaylist ] = useContext(PlaylistContext);
+  const { playlist, setPlaylist, deleteFromPlaylist } = useContext(PlaylistContext);
   const [ selectedMedia, setSelectedMedia ] = useContext(SelectedMediaContext);
 
   useEffect(() => {

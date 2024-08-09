@@ -6,7 +6,7 @@ function AddUrl() {
   const [ counter, setCounter ] = useState(1);
   const [ title, setTitle ] = useState('');
   const [ url, setUrl ] = useState('');
-  const [ , , addToPlaylist ] = useContext(PlaylistContext);
+  const { addToPlaylist } = useContext(PlaylistContext);
   const [ , setSelectedMedia ] = useContext(SelectedMediaContext);
 
   function addMedia() {

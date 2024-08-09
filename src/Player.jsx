@@ -4,7 +4,7 @@ import PlaylistContext from './PlaylistContext';
 
 function Player() {
   const [ selectedMedia ] = useContext(SelectedMediaContext);
-  const [ playlist ] = useContext(PlaylistContext);
+  const { playlist } = useContext(PlaylistContext);
   const [ src, setSrc ] = useState(null);
   const [ isPlaying, setIsPlaying ] = useState(false);
   const videoRef = useRef();
@@ -37,29 +37,45 @@ function Player() {
     videoRef.current.currentTime = 0;
   }
 
-  return (
-    <div className='player'>
-      <video
-        ref={videoRef}
-        controls
-        src={src}
-        onPlay={() => setPlaying(true)}
-        onPause={() => setPlaying(false)}
-        onEnded={() => setPlaying(false)}></video>
-      <div className="player-control">
-        <button onClick={handlePlayPause}>Play</button>
-        <button onClick={handleStop}>Stop</button>
-        <span className="volume-control">
-          <input type='range' />
-          <span>100</span>
-        </span>
-        <span className="seek-control">
-          <input type='range' />
-          <span>100/100</span>
-        </span>
+  if(playlist.length) {
+    return (
+      <div className='player'>
+        <video
+          ref={videoRef}
+          controls
+          src={src}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+          onEnded={() => setPlaying(false)}></video>
+        <div className="player-control">
+          <button onClick={handlePlayPause}>Play</button>
+          <button onClick={handleStop}>Stop</button>
+          <span className="volume-control">
+            <input type='range' />
+            <span>100</span>
+          </span>
+          <span className="seek-control">
+            <input type='range' />
+            <span>100/100</span>
+          </span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className='player'>
+        <h3 style={
+          {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '200px',
+            backgroundColor: 'rgb(200, 200, 200)',
+          }
+        }>No media</h3>
+      </div>
+    );
+  }
 }
 
 export default Player;
